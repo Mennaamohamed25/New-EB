@@ -118,5 +118,5 @@ function ExternalIconLink({ href, icon }) {
   } else if (icon === "location") {
     svg = <svg stroke="currentColor" fill="none" strokeWidth="2" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path><path d="M8 12h.01"></path><path d="M12 12h.01"></path><path d="M16 12h.01"></path></svg>;
   }
-  return <a href={href} target="_blank" rel="noopener noreferrer" className="hover:text-blue-500 transition-colors">{svg}</a>;
+  return <a href={href} target="_blank" rel="noopener noreferrer" className="hover:text-main transition-colors">{svg}</a>;
 }
