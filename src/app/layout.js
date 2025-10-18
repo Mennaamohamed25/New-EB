@@ -1,7 +1,7 @@
 // import { Lexend, Cairo } from "next/font/google";
 import { Inter } from "next/font/google";
 
-import "../globals.css";
+import "./globals.css";
 import Navbar from '../components/common/Navbar.jsx'
 import Footer from '../components/common/Footer.jsx'
 import { NextIntlClientProvider} from "next-intl"
@@ -27,7 +27,7 @@ export default async function LocaleLayout({ children, params }) {
 
   setRequestLocale(locale);
 
-  const messages = (await import(`../../../messages/${locale}.json`)).default;
+  const messages = (await import(`../../messages/${locale}.json`)).default;
 
   return (
     <html     lang={locale}
