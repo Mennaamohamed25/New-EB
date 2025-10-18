@@ -2,13 +2,13 @@
 import { Inter } from "next/font/google";
 
 import "../globals.css";
-import Navbar from '../../components/common/Navbar.jsx'
-import Footer from '../../components/common/Footer.jsx'
+import Navbar from '../components/common/Navbar.jsx'
+import Footer from '../components/common/Footer.jsx'
 import { NextIntlClientProvider} from "next-intl"
 import { setRequestLocale } from "next-intl/server";
 import { hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
-import { routing } from "../../i18n/routing";
+import { routing } from "../i18n/routing";
 
 const inter = Inter({
   subsets: ["latin"],
