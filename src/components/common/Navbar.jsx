@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import Logo from "../../../public/images/Logo.svg"
 import { motion, AnimatePresence } from "framer-motion";
 import {
   GlobeAltIcon,
@@ -133,7 +134,7 @@ export default function Navbar() {
           {/* Logo (left side) */}
           <a href="/" className="flex-shrink-0">
             <Image
-              src="/images/logo.svg"
+              src={Logo}
               alt="Logo"
               width={160}
               height={60}
