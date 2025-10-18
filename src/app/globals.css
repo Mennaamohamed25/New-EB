@@ -24,12 +24,9 @@
   --color-bg: #0d0d0d;
 }
 
-html[lang="ar"] {
-  font-family: "El Messiri", sans-serif;
-    scroll-behavior: smooth;
-}
 
-html[lang="en"] {
+
+html {
   font-family: 'Inter', 'Inter Fallback', sans-serif;
   
 }

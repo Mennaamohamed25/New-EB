@@ -9,7 +9,7 @@ module.exports = {
     extend: {
       fontFamily: {
       inter: ['Inter', 'Inter Fallback', 'sans-serif'],
-        arabic: ['"El Messiri"', 'sans-serif'],
+       
       },
       colors: {
         primary: "var(--color-primary)",
