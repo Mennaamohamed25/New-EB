@@ -1,7 +1,3 @@
-import createNextIntlPlugin from 'next-intl/plugin';
-
-const withNextIntl = createNextIntlPlugin();
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -15,18 +11,6 @@ const nextConfig = {
       },
     ],
   },
-
-  // 🔹 redirect root / → /en (default locale)
-  async redirects() {
-    return [
-      {
-        source: '/',
-        destination: '/en', // ضبطي على اللغة اللي عايزاها default
-        permanent: true,
-      },
-    ];
-  },
 };
 
-// ✅ لازم نصدّره بعد دمجه مع next-intl
-export default withNextIntl(nextConfig);
+export default nextConfig;
