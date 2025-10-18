@@ -14,7 +14,17 @@ const nextConfig = {
         pathname: '/**',
       },
     ],
-    
+  },
+
+  // 🔹 redirect root / → /en (default locale)
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/en', // ضبطي على اللغة اللي عايزاها default
+        permanent: true,
+      },
+    ];
   },
 };
 
