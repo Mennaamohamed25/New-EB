@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { motion, useMotionValue, animate, useInView } from "framer-motion";
+import { motion, useMotionValue, animate, useInView, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import LearnMoreButton from "../common/LearnMoreButton";
 
@@ -50,6 +50,45 @@ const stats = [
   { to: 100, suffix: "k+", label: "Deployments" },
   { to: 4, suffix: "k+", label: "AI-Powered Smart Plant Projects" },
 ];
+
+// -------------------------
+// Animated Yellow Word - Letter by Letter Fill
+// -------------------------
+const AnimatedYellowWord = ({ text }) => {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start 90%", "end 30%"],
+  });
+
+  const letters = text.split("");
+
+  return (
+    <span ref={ref} className="inline-block">
+      {letters.map((letter, i) => {
+        const start = i / letters.length;
+        const end = (i + 1) / letters.length;
+
+        // اللون بيتحول تدريجياً من رمادي باهت إلى أصفر
+        const color = useTransform(
+          scrollYProgress,
+          [start, end],
+          ["rgba(209,213,219,0.3)", "#e9c369"]
+        );
+
+        return (
+          <motion.span
+            key={i}
+            style={{ color }}
+            className="inline-block transition-colors duration-300"
+          >
+            {letter === " " ? "\u00A0" : letter}
+          </motion.span>
+        );
+      })}
+    </span>
+  );
+};
 
 // -------------------------
 // About Section Component
@@ -104,10 +143,11 @@ const AboutSection = () => {
               About Endlessbuilding
             </span>
 
+            {/* Title with animated yellow words */}
             <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-[52px] xl:leading-[1.15]">
-              Leading <span className="text-main">Industrial AI</span> To
+              Leading <AnimatedYellowWord text="Industrial AI" /> To
               <br />
-              <span className="text-main">Sustainable Growth</span>
+              <AnimatedYellowWord text="Sustainable Growth" />
             </h1>
 
             <div className="mt-12">

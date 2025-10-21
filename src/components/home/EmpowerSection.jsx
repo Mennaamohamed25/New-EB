@@ -1,8 +1,9 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useScroll, useTransform } from "framer-motion";
 
+// Cards Data
 const cards = [
   {
     title: "A Strong Legal Support System",
@@ -23,6 +24,44 @@ const cards = [
   },
 ];
 
+// 🔠 Animated Word Component (Each letter fills color on scroll)
+const AnimatedYellowWord = ({ text }) => {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start 90%", "end 20%"],
+  });
+
+  const letters = text.split("");
+
+  return (
+    <span ref={ref} className="inline-block">
+      {letters.map((letter, i) => {
+        const start = i / letters.length;
+        const end = (i + 1) / letters.length;
+        const color = useTransform(
+          scrollYProgress,
+          [start, end],
+          ["rgba(209,213,219,0.3)", "#e9c369"]
+        );
+
+        return (
+          <motion.span
+            key={i}
+            style={{ color }}
+            className="inline-block transition-colors duration-300"
+          >
+            {letter}
+          </motion.span>
+        );
+      })}
+    </span>
+  );
+};
+
+// -------------------------
+// Empower Section Component
+// -------------------------
 export default function EmpowerSection() {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: false, amount: 0.2 }); // triggers on scroll up/down
@@ -48,9 +87,11 @@ export default function EmpowerSection() {
         transition={{ duration: 0.8 }}
         className="text-4xl md:text-5xl font-semibold mb-12 text-center"
       >
-        <span className="text-main">Our</span> Unique Approach
+        <AnimatedYellowWord text="Our" />{" "}
+        <span className="text-white">Unique Approach</span>
       </motion.h2>
 
+      {/* Cards */}
       <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-stretch">
         {/* Left Column */}
         <div className="flex flex-col gap-6 flex-[0.6]">
